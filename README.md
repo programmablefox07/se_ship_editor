@@ -16,7 +16,6 @@ This is a 2D ship design tool for Space Engineers blueprints, allowing for multi
 2.  **Run the application:** `python app.py`
 3.  Access in your browser: `http://127.0.0.1:5000/`
 
-<<<<<<< HEAD
 ## License:
 This software is distributed under the MITAI License (see LICENSE.txt for details), which restricts commercial use due to AI assistance in its development. 
 =======
@@ -25,4 +24,4 @@ This software is distributed under the MITAI License (see LICENSE.txt for detail
 
 ## License:
 This software is distributed under the MITAI License (see LICENSE.txt for details), which restricts commercial use due to AI assistance in its development. 
->>>>>>> d517b7088ccdde47b06d3ee0b18f8686ac4aa6c8
+
