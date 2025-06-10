@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Space Engineers Ship Designer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Space Engineers 2D Ship Designer</h1>
+        <div class="controls">
+            <div class="layer-controls">
+                <label for="currentLayer">Current Layer (Z):</label>
+                <span id="currentLayer">0</span>
+                <button id="upLayer">Up Layer</button>
+                <button id="downLayer">Down Layer</button>
+            </div>
+            <div class="block-selection">
+                <label for="blockType">Block Type:</label>
+                <select id="blockType">
+                    <option value="LargeBlockArmorBlock">LargeBlockArmorBlock</option>
+                    <option value="LargeBlockArmorSlope">LargeBlockArmorSlope</option>
+                    <option value="LargeBlockArmorCorner">LargeBlockArmorCorner</option>
+                    <option value="Window1x1Flat">Window1x1Flat</option>
+                    <option value="Window1x1Slope">Window1x1Slope</option>
+                    <option value="SmallLight">SmallLight</option>
+                    <option value="OpenCockpitLarge">OpenCockpitLarge</option>
+                </select>
+                <label for="blockOrientationForward">Forward:</label>
+                <select id="blockOrientationForward">
+                    <option value="Forward">Forward</option>
+                    <option value="Backward">Backward</option>
+                    <option value="Left">Left</option>
+                    <option value="Right">Right</option>
+                    <option value="Up">Up</option>
+                    <option value="Down">Down</option>
+                </select>
+                <label for="blockOrientationUp">Up:</label>
+                <select id="blockOrientationUp">
+                    <option value="Up">Up</option>
+                    <option value="Down">Down</option>
+                    <option value="Left">Left</option>
+                    <option value="Right">Right</option>
+                    <option value="Forward">Forward</option>
+                    <option value="Backward">Backward</option>
+                </select>
+                <button id="placeBlock">Place Block</button>
+            </div>
+            <div class="file-operations">
+                <input type="file" id="importFile" accept=".sbc">
+                <button id="importBtn">Import SBC</button>
+                <input type="text" id="exportFileName" placeholder="Enter .sbc filename">
+                <button id="exportBtn">Export SBC</button>
+                <button id="helpBtn" class="help-button">?</button>
+            </div>
+        </div>
+        <canvas id="shipCanvas" width="800" height="600"></canvas>
+    </div>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html> 

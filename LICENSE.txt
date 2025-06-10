@@ -1,0 +1,28 @@
+MITAI License
+
+Copyright (c) 2024 [Your Name or Entity]
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software for non-commercial purposes, without restriction, including
+without limitation the rights to use, copy, modify, merge, publish, distribute,
+sublicense, and/or sell copies of the Software, and to permit persons to whom the
+Software is furnished to do so, subject to the following conditions:
+
+1.  **AI Development Acknowledgment & Non-Commercial Use:**
+    This software was developed with the assistance of an AI model. Therefore, this software, and any derivative works based on it, shall **not be used for any monetary gain, directly or indirectly.** This includes, but is not limited to, selling the software, using it in commercial products, or using it to provide services for a fee. It is intended for personal, educational, and research purposes only.
+
+2.  **Disclaimer of Warranty & "As Is" Provision:**
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+    SOFTWARE. This software may be buggy and is provided as is.
+
+3.  **Updates:**
+    The software may receive updates, but there is no guarantee of such.
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software. 
