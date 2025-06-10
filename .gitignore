@@ -1,0 +1,20 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+*.egg-info/
+.pytest_cache/
+
+# Flask
+instance/
+
+# Space Engineers Blueprint Output
+blueprints/
+
+# Editor specific
+.vscode/
+.history/ 

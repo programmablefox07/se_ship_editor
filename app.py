@@ -3,6 +3,8 @@ import xml.etree.ElementTree as ET
 import os
 import base64
 from io import BytesIO
+import webbrowser
+import threading
 
 app = Flask(__name__)
 
@@ -60,6 +62,7 @@ def export_sbc():
     blocks = data.get('blocks', [])
     blueprint_name = data.get('filename', 'exported_ship')
     thumbnail_data = data.get('thumbnail', None)
+    overwrite = data.get('overwrite', False)
 
     # Ensure the blueprint_name does not contain .sbc extension for folder naming
     if blueprint_name.lower().endswith('.sbc'):
@@ -69,8 +72,14 @@ def export_sbc():
     blueprints_dir = os.path.join(app.root_path, 'blueprints')
     os.makedirs(blueprints_dir, exist_ok=True) # Ensure blueprints directory exists
 
-    # Create a unique folder for the blueprint
+    # Full path for the blueprint folder
     blueprint_folder = os.path.join(blueprints_dir, blueprint_name)
+
+    # Check if the folder already exists and if overwrite is not requested
+    if os.path.exists(blueprint_folder) and not overwrite:
+        return {'error': 'Blueprint folder already exists. Overwrite?', 'code': 'EXISTS'}, 409 # 409 Conflict
+
+    # Create the unique folder for the blueprint (or recreate if overwriting)
     os.makedirs(blueprint_folder, exist_ok=True)
 
     # Path for the .sbc file inside the new folder
@@ -149,11 +158,19 @@ def export_sbc():
             print(f"Error saving thumbnail: {e}")
             return {'error': f'Failed to save thumbnail: {e}'}, 500
 
-    return {'message': f'Blueprint \'{blueprint_name}\' exported successfully to blueprints/{blueprint_name}/'}
+    return {'message': f'Blueprint \'{blueprint_name}\' exported successfully to {os.path.abspath(blueprint_folder)}/'}
 
 if __name__ == '__main__':
+    # Function to open the browser
+    def open_browser():
+        webbrowser.open_new('http://127.0.0.1:5000/')
+
+    # Start the browser opening in a separate thread after a small delay
+    # This delay ensures the Flask server has a moment to start up
+    threading.Timer(1, open_browser).start()
+
     # Ensure 'templates', 'static', and 'blueprints' directories exist
     os.makedirs('templates', exist_ok=True)
     os.makedirs('static', exist_ok=True)
     os.makedirs('blueprints', exist_ok=True)
-    app.run(debug=True) 
+    app.run(debug=True, use_reloader=False) 

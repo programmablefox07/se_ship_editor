@@ -227,13 +227,44 @@ exportBtn.addEventListener('click', async () => {
             body: JSON.stringify({
                 blocks: allBlocks,
                 filename: filename.endsWith('.sbc') ? filename : `${filename}.sbc`,
-                thumbnail: imageDataURL // Send the thumbnail data
+                thumbnail: imageDataURL,
+                overwrite: false // Default to not overwriting
             })
         });
 
         if (response.ok) {
             const data = await response.json();
             alert(data.message); // Display the success message from the backend
+        } else if (response.status === 409) {
+            const errorData = await response.json();
+            if (errorData.code === 'EXISTS') {
+                const confirmOverwrite = confirm(`${errorData.error}\nDo you want to overwrite it?`);
+                if (confirmOverwrite) {
+                    // Resend the request with overwrite flag
+                    const overwriteResponse = await fetch('/export_sbc', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            blocks: allBlocks,
+                            filename: filename.endsWith('.sbc') ? filename : `${filename}.sbc`,
+                            thumbnail: imageDataURL,
+                            overwrite: true // Set overwrite to true
+                        })
+                    });
+
+                    if (overwriteResponse.ok) {
+                        const overwriteData = await overwriteResponse.json();
+                        alert(overwriteData.message);
+                    } else {
+                        const overwriteErrorData = await overwriteResponse.json();
+                        alert(`Error overwriting file: ${overwriteErrorData.error}`);
+                    }
+                } else {
+                    alert('Export cancelled.');
+                }
+            }
         } else {
             const errorData = await response.json();
             alert(`Error exporting file: ${errorData.error}`);
