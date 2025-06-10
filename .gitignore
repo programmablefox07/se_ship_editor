@@ -17,4 +17,8 @@ blueprints/
 
 # Editor specific
 .vscode/
-.history/ 
+.history/
+
+# PyInstaller generated directories
+build/
+dist/ 
