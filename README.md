@@ -20,9 +20,6 @@ This is a 2D ship design tool for Space Engineers blueprints, allowing for multi
  download the latested release 
 
 ## License:
-This software is distributed under the MITAI License (see LICENSE.txt for details), which restricts commercial use due to AI assistance in its development. 
-=======
+This software is distributed under the MITAI License (see LICENSE for details), which restricts commercial use due to AI assistance in its development. 
 
-## License:
-This software is distributed under the MITAI License (see LICENSE.txt for details), which restricts commercial use due to AI assistance in its development. 
 
