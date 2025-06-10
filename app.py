@@ -5,6 +5,7 @@ import base64
 from io import BytesIO
 import webbrowser
 import threading
+import sys # New: Import sys
 
 app = Flask(__name__)
 
@@ -69,7 +70,13 @@ def export_sbc():
         blueprint_name = blueprint_name[:-4] # Remove .sbc
     
     # Define the base directory for blueprints
-    blueprints_dir = os.path.join(app.root_path, 'blueprints')
+    # Use sys._MEIPASS for PyInstaller --onefile mode to get the correct executable directory
+    if getattr(sys, 'frozen', False): # Check if running as a PyInstaller executable
+        base_dir = os.path.dirname(sys.executable)
+    else:
+        base_dir = app.root_path
+
+    blueprints_dir = os.path.join(base_dir, 'blueprints')
     os.makedirs(blueprints_dir, exist_ok=True) # Ensure blueprints directory exists
 
     # Full path for the blueprint folder
